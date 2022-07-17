@@ -91,7 +91,20 @@ This allows us to create a change set using template which is already validated 
 > We do not have a guarantee that serverless maintainers won't remove `shouldNotDeploy` variable or
 > change its' name which would probably result in automatic deploy. (Read (How to use?)[#how-to-use])
 
+## History
+Plugin was created based on ideas from:
+- https://github.com/trek10inc/serverless-cloudformation-changesets and its' fork https://github.com/kandrzejczak/serverless-cloudformation-changesets
+Kudos to their authors 👏🏅
+ 
+Unfortunately, main repository hasn't been updated in a few years which makes some of its README invalid and some of 
+its functionality not working as intended to.
+Moreover, there is some "missing" functionality like ability to print, execute and delete change set. 
+
+Instead of creating a fork, this project is completely rewritten. It takes the idea how to create a change set 
+and prevent the deployment, but also adds missing functionality and automated full integration (E2E) tests which 
+should give you a peace of mind when upgrading serverless version. 
 
 ## TODO:
-We are aware that following functionality is missing:
-- Ability to delete specific change set
+We are aware that following functionality is missing or needs to improved:
+- Ability to delete a specific change set
+- Enhance README 😜
