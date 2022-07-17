@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serverless stack management creates a stack and ChangeSet but does not deploy the ChangeSet 1`] = `
+Array [
+  Object {
+    "HookInvocationCount": undefined,
+    "ResourceChange": Object {
+      "Action": "Add",
+      "ChangeSetId": undefined,
+      "Details": Array [],
+      "LogicalResourceId": "ServerlessDeploymentBucketPolicy",
+      "ModuleInfo": undefined,
+      "PhysicalResourceId": undefined,
+      "Replacement": undefined,
+      "ResourceType": "AWS::S3::BucketPolicy",
+      "Scope": Array [],
+    },
+    "Type": "Resource",
+  },
+  Object {
+    "HookInvocationCount": undefined,
+    "ResourceChange": Object {
+      "Action": "Add",
+      "ChangeSetId": undefined,
+      "Details": Array [],
+      "LogicalResourceId": "ServerlessDeploymentBucket",
+      "ModuleInfo": undefined,
+      "PhysicalResourceId": undefined,
+      "Replacement": undefined,
+      "ResourceType": "AWS::S3::Bucket",
+      "Scope": Array [],
+    },
+    "Type": "Resource",
+  },
+]
+`;
+
+exports[`serverless stack management creates a stack and ChangeSet but does not deploy the ChangeSet 2`] = `
+Array [
+  Object {
+    "HookInvocationCount": undefined,
+    "ResourceChange": Object {
+      "Action": "Add",
+      "ChangeSetId": undefined,
+      "Details": Array [],
+      "LogicalResourceId": "HelloLambdaFunction",
+      "ModuleInfo": undefined,
+      "PhysicalResourceId": undefined,
+      "Replacement": undefined,
+      "ResourceType": "AWS::Lambda::Function",
+      "Scope": Array [],
+    },
+    "Type": "Resource",
+  },
+  Object {
+    "HookInvocationCount": undefined,
+    "ResourceChange": Object {
+      "Action": "Add",
+      "ChangeSetId": undefined,
+      "Details": Array [],
+      "LogicalResourceId": "HelloLambdaVersion",
+      "ModuleInfo": undefined,
+      "PhysicalResourceId": undefined,
+      "Replacement": undefined,
+      "ResourceType": "AWS::Lambda::Version",
+      "Scope": Array [],
+    },
+    "Type": "Resource",
+  },
+  Object {
+    "HookInvocationCount": undefined,
+    "ResourceChange": Object {
+      "Action": "Add",
+      "ChangeSetId": undefined,
+      "Details": Array [],
+      "LogicalResourceId": "HelloLogGroup",
+      "ModuleInfo": undefined,
+      "PhysicalResourceId": undefined,
+      "Replacement": undefined,
+      "ResourceType": "AWS::Logs::LogGroup",
+      "Scope": Array [],
+    },
+    "Type": "Resource",
+  },
+  Object {
+    "HookInvocationCount": undefined,
+    "ResourceChange": Object {
+      "Action": "Add",
+      "ChangeSetId": undefined,
+      "Details": Array [],
+      "LogicalResourceId": "IamRoleLambdaExecution",
+      "ModuleInfo": undefined,
+      "PhysicalResourceId": undefined,
+      "Replacement": undefined,
+      "ResourceType": "AWS::IAM::Role",
+      "Scope": Array [],
+    },
+    "Type": "Resource",
+  },
+]
+`;
+
+exports[`serverless stack management prints the ChangeSet using env 1`] = `
+"
+> sls-cloudformation-stackmanager-test@0.0.1 deploy-dry-run
+> serverless print-change-set \\"--tableWidth=800\\"
+
+ExecutionStatus: AVAILABLE
+StackName: sls-sm-test-randomSuffix-dev, ChangeSetName: TestChangeSet-randomSuffix
+ Action  ResourceType           LogicalResourceID
+--------------------------------------------------------------------------------
+ Add     AWS::Lambda::Function  HelloLambdaFunction
+ Add     AWS::Lambda::Version   HelloLambdaVersion
+ Add     AWS::Logs::LogGroup    HelloLogGroup
+ Add     AWS::IAM::Role         IamRoleLambdaExecution
+
+"
+`;
+
+exports[`serverless stack management prints the ChangeSet using inline command 1`] = `
+"
+> sls-cloudformation-stackmanager-test@0.0.1 deploy-dry-run
+> serverless print-change-set \\"--changeSetName=TestChangeSet-randomSuffix\\" \\"--tableWidth=800\\"
+
+ExecutionStatus: AVAILABLE
+StackName: sls-sm-test-randomSuffix-dev, ChangeSetName: TestChangeSet-randomSuffix
+ Action  ResourceType           LogicalResourceID
+--------------------------------------------------------------------------------
+ Add     AWS::Lambda::Function  HelloLambdaFunction
+ Add     AWS::Lambda::Version   HelloLambdaVersion
+ Add     AWS::Logs::LogGroup    HelloLogGroup
+ Add     AWS::IAM::Role         IamRoleLambdaExecution
+
+"
+`;

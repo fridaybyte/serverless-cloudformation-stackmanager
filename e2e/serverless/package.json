@@ -1,0 +1,16 @@
+{
+  "name": "sls-cloudformation-stackmanager-test",
+  "description": "Stack being created as a part of E2E test for Serverless-Cloudformation-StackManager",
+  "version": "0.0.1",
+  "scripts": {
+    "deploy-change-set": "serverless deploy",
+    "execute-change-set": "serverless execute-change-set",
+    "deploy-dry-run": "serverless print-change-set",
+    "delete-changeset": "serverless delete-change-set",
+    "delete-stack": "serverless remove"
+  },
+  "dependencies": {
+    "serverless": "^3.21.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,43 @@
+name: Build and publish NPM package
+on: workflow_dispatch
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: npm install, build, and test
+        run: |
+          npm ci
+          npm run build
+          npm test
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: archive dist
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
+  publish:
+    runs-on: ubuntu-latest
+    needs: build_and_test
+    environment: production
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download dist (built package) artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+      - name: Publish package to public npm registry
+        run: npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
