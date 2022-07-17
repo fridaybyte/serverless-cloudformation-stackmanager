@@ -21,7 +21,7 @@ We recommend to:
 > In production environment use fixed versions of serverless by using `package-lock.json` or `yarn.lock` to have a guarantee 
 > that the plugin doesn't break due to internal changes in serverless which could result in automatic deployment of 
 > changes instead of using change sets. You should be safe to upgrade serverless if our E2E tests passed.
-> (Check also "how project guarantees that the plugin work")[#how-project-guarantees-that-the-plugin-works?]
+> [Check also "how project guarantees that the plugin work"](#how-project-guarantees-that-the-plugin-works)
 
 > **Note**
 > In case plugin breaks, we intend to release a minor release of the plugin which would
@@ -82,14 +82,14 @@ variable to `true`.
 
 As you've probably guessed this prevents the deployment, but all the artifacts are already deployed since the hook is after
 the `uploadArtifacts` lifecycle stage.
-((check also deployment lifecycle defined by
-serverless)[https://github.com/serverless/serverless/blob/bb37f4fe75ff5234fae48ada433cd52ddf51cb91/lib/plugins/aws/deploy/index.js])
+([check also deployment lifecycle defined by
+serverless](https://github.com/serverless/serverless/blob/bb37f4fe75ff5234fae48ada433cd52ddf51cb91/lib/plugins/aws/deploy/index.js#L74-L79))
 
 This allows us to create a change set using template which is already validated and uploaded by serverless framework.
 
 > **Warning**
 > We do not have a guarantee that serverless maintainers won't remove `shouldNotDeploy` variable or
-> change its' name which would probably result in automatic deploy. (Read (How to use?)[#how-to-use])
+> change its' name which would probably result in automatic deploy. (Read [How to use?](#how-to-use))
 
 ## History
 Plugin was created based on ideas from:
